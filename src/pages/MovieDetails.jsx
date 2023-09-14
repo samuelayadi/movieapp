@@ -12,6 +12,8 @@ const MovieDetails = () => {
   const [errorStatus, setErrorStatus] = useState(false);
 
   useEffect(() => {
+
+    // Api Details
     const apiKey = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0MTU0NTM0ZWQxN2EyZWY3YjJkN2UyMjQzYjhmY2UzZiIsInN1YiI6IjY0ZmUzZWFkZGI0ZWQ2MTAzM2ExMDM1MCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.G1sotO3zZdTuukDG-th6N6kwySQt_XXHLGD6k2D2OfQ"; // Replace with your API key
     const options = {
       method: "GET",
@@ -21,25 +23,29 @@ const MovieDetails = () => {
       },
     };
 
+
+    // Request to get Movies
     axios
       .get(`https://api.themoviedb.org/3/movie/${id}`, options)
       .then((response) => {
         const movieData = response.data;
         setMovieDetails(movieData);
-        setIsLoading(false); // Set loading to false when the data is fetched successfully
+        setIsLoading(false); 
       })
       .catch((err) => {
-        setErrorStatus(true); // Set error status to true
-        setErrorMessage(err.message); // Set the error message
-        setIsLoading(false); // Set loading to false when an error occurs
+        setErrorStatus(true); 
+        setErrorMessage(err.message); 
+        setIsLoading(false); 
       });
   }, [id]);
 
+
+  
   return (
     <div>
-      {errorStatus ? ( // Conditionally render error message and hide other content
+      {errorStatus ? (
         <div className="text-red-500">{errorMessage}</div>
-      ) : isLoading ? ( // Display spinner while loading
+      ) : isLoading ? (
         <div className="h-screen w-full flex items-center justify-center ">
           <div
             className="w-20 h-20 rounded-full animate-spin

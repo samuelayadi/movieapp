@@ -1,0 +1,14 @@
+This is a movie discovery react app that was built by consuming tmdb api
+
+*******To Open it******
+1. Clone the repo to your local machine using `git clone https://github.com/samuelayadi/movieapp.git
+2.You change into client directory by using the command "cd directory" 
+3. Run "npm install" in order for all dependencies to be installed
+4.Run npm start
+5.Open the project on your browser 
+
+
+****Folder Structure and Arrangement****
+App.jsx is the root folder and it contains Routers to Home and MovieDetails components
+Home Component contains the Navbar, Header, MovieCardHeading, MovieCard and also Footer. 
+MovieDetails has 2 Components namely the Sidebar and the MainMovieDetails Component 

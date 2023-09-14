@@ -3,8 +3,10 @@ import {useEffect, useState} from 'react';
 import { BsFillPlayCircleFill, BsSearch } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
-const Header = ({ title, backdrop_path, overview, popularity}) => {
+const Header = ({ title, backdrop_path, overview, vote_average}) => {
+  // Poster URL
   const posterURL = `https://image.tmdb.org/t/p/original${backdrop_path}`;
+
   return (
     <section className="text-white h-[85vh] poster-section-container">
       <div className="absolute h-[100vh] w-full top-0 z-10 opacity-50 bg-black"></div>
@@ -31,7 +33,7 @@ const Header = ({ title, backdrop_path, overview, popularity}) => {
                     alt=""
                     className="w-10 mr-2"
                   />{" "}
-                  {Math.round(popularity)}.0/100
+                  {Math.round(vote_average * 10) / 10}/100
                 </div>
               </div>
               <p className="text-sm mt-6 xs:text-md">{overview}</p>

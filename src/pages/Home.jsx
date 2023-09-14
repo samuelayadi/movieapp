@@ -12,8 +12,6 @@ const Home = () => {
   const [search, setSearch] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
-  
-
 
   // API Details
   const options = {
@@ -26,7 +24,6 @@ const Home = () => {
   };
 
   useEffect(() => {
-
     // Request to get poster Details
     try {
       axios
@@ -35,65 +32,62 @@ const Home = () => {
           options
         )
         .then((response) => setPosterDetails(response.data.results));
-        setIsLoading(false);
+      setIsLoading(false);
     } catch (err) {
       console.error("There was a problem fetching the data:", err);
       setIsLoading(false);
-    } 
-
+    }
 
     // Request to get Movies Details
     try {
       axios
         .get(
-          "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1",
+          "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1",
           options
         )
         .then((response) => setMovies(response.data.results.slice(0, 10)));
-        setIsLoading(false);
+      setIsLoading(false);
     } catch (err) {
       setIsLoading(false);
-    } 
-
-
+    }
   }, []);
 
+  // Function for Searching Movies
+  const searchMovie = (e) => {
+    e.preventDefault();
 
-const searchMovie = (e) => {
-  e.preventDefault();
-  console.log("searching...");
+    axios
+      .get(
+        `https://api.themoviedb.org/3/search/movie?query=${search}&include_adult=true&language=en-US&page=1`,
+        options
+      )
+      .then((response) => {
+        if (!response) {
+          throw new Error("Network response was not ok");
+        }
+        setMovies(response.data.results.slice(0, 30));
+      })
+      .catch((err) => {
+        setError("Error searching for movies: " + err.message);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  };
 
-  axios
-    .get(
-      `https://api.themoviedb.org/3/search/movie?query=${search}&include_adult=false&language=en-US&page=1`,
-      options
-    )
-    .then((response) => {
-      if (!response) {
-        throw new Error("Network response was not ok");
-      }
-      setMovies(response.data.results.slice(0, 30));
-    })
-    .catch((err) => {
-      setError("Error searching for movies: " + err.message);
-    })
-    .finally(() => {
-      setIsLoading(false);
-    });
-};
 
-  
 
-  console.log(posterDetails);
-  console.log(movies);
+
 
   return (
     <div>
-      {error !== "" && (
-        <>
-          <h2>{error}</h2>
-        </>
-      )}
+      <div className="">
+        {error !== "" && (
+          <>
+            <h2>{error}</h2>
+          </>
+        )}
+      </div>
 
       {isLoading ? (
         <>
@@ -130,57 +124,3 @@ const searchMovie = (e) => {
 };
 
 export default Home;
-
-
-// import React, { useState } from 'react';
-// import axios from 'axios';
-
-// const apiKey = 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0MTU0NTM0ZWQxN2EyZWY3YjJkN2UyMjQzYjhmY2UzZiIsInN1YiI6IjY0ZmUzZWFkZGI0ZWQ2MTAzM2ExMDM1MCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.G1sotO3zZdTuukDG-th6N6kwySQt_XXHLGD6k2D2OfQ';
-
-// const AddMovieForm = () => {
-//   const [newMovieData, setNewMovieData] = useState({
-//     title: '',
-//     overview: '',
-//     release_date: '',
-//     original_language: 'en',
-//     genre_ids: [],
-//     poster_path: '',
-//   });
-
-//   const handleInputChange = (event) => {
-//     const { name, value } = event.target;
-//     setNewMovieData({ ...newMovieData, [name]: value });
-//   };
-
-//   const addMovieToTMDb = async () => {
-//     try {
-//       const response = await axios.post(`https://api.themoviedb.org/3/movie?api_key=${apiKey}`, newMovieData);
-
-//       if (response.status === 201) {
-//         console.log(`Successfully added a new movie with ID ${response.data.id}`);
-
-//         // Save the movie data to local storage
-//         const savedMovies = JSON.parse(localStorage.getItem('movies')) || [];
-//         savedMovies.push(newMovieData);
-//         localStorage.setItem('movies', JSON.stringify(savedMovies));
-
-//         // Reset the form or perform any other action after a successful POST.
-//         setNewMovieData({
-//           title: '',
-//           overview: '',
-//           release_date: '',
-//           original_language: 'en',
-//           genre_ids: [],
-//           poster_path: '',
-//         });
-//       } else {
-//         console.error('Failed to add the movie:', response.data);
-//       }
-//     } catch (error) {
-//       console.error('An error occurred:', error);
-//     }
-//   };
-
-//   return (
-//     <div
-

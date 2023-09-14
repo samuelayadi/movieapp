@@ -1,48 +1,13 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import React from "react";
 import { BsFillHeartFill, BsLink45Deg } from "react-icons/bs";
 import { FaPlay } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-const MainMovieDetails = ({ movieDetails }) => {
-  //   const [color, setColor] = useState(
-  //   localStorage.getItem("favorites") &&
-  //     JSON.parse(localStorage.getItem("favorites")).includes(id)
-  //     ? "primary opacity-90"
-  //     : "grey bg-grey2"
-  // );
+const MainMovieDetails = ({ movieDetails}) => {
+ 
 
-
-
-  // const updateFavorites = (movieId) => {
-  //   const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-  //   const isFavorite = favorites.includes(movieId);
-  //   if (isFavorite) {
-  //     const updatedFavorites = favorites.filter((id) => id !== movieId);
-  //     localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
-  //   } else {
-  //     favorites.push(movieId);
-  //     localStorage.setItem("favorites", JSON.stringify(favorites));
-  //   }
-  // };
-
-  // const toggleColor = () => {
-  //   updateFavorites(id);
-  //   if (color === "grey bg-grey2") {
-  //     setColor("primary opacity-90");
-  //   } else {
-  //     setColor("grey bg-grey2");
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-  //   if (favorites.includes(id)) {
-  //     setColor("primary opacity-90");
-  //   }
-  // }, [id]);
-
-
+  // Function to Convert to UTC Date Format
   function convertStringToUTCDate(dateString) {
     const normalDate = new Date(dateString);
 
@@ -82,9 +47,14 @@ const MainMovieDetails = ({ movieDetails }) => {
             </button>
           </div>
           <div className="flex mt-6 mx-auto text-lg space-x-2 lg:space-x-4 flex-wrap">
-            <p className="font-semibold">{movieDetails.title}</p> .
-            {utcDate && <p>{utcDate.toDateString()}</p>}
-            <p>{movieDetails.runtime} minutes</p>.
+            <p data-testid:movie-title className="font-semibold">
+              {movieDetails.title}
+            </p>{" "}
+            .
+            {utcDate && (
+              <p data-testid:movie-release-date>{utcDate.toDateString()}</p>
+            )}
+            <p data-testid:movie-runtime>{movieDetails.runtime} minutes</p>.
           </div>
 
           <div className="flex text-sm mt-5">
@@ -93,11 +63,13 @@ const MainMovieDetails = ({ movieDetails }) => {
               alt=""
               className="w-10 mr-2"
             />{" "}
-            {Math.round(movieDetails.popularity)}.0/100
+            {Math.round(movieDetails.vote_average * 10) / 10}/10
           </div>
 
           <div className="">
-            <p className="mt-5">{movieDetails.overview}</p>
+            <p data-testid:overview className="mt-5">
+              {movieDetails.overview}
+            </p>
           </div>
 
           <div className="mt-8 mb-6">
