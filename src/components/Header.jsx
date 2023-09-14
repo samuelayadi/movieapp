@@ -33,7 +33,7 @@ const Header = ({ title, backdrop_path, overview, vote_average}) => {
                     alt=""
                     className="w-10 mr-2"
                   />{" "}
-                  {Math.round(vote_average * 10) / 10}/100
+                  {Math.round(vote_average * 10) / 10}/10
                 </div>
               </div>
               <p className="text-sm mt-6 xs:text-md">{overview}</p>
