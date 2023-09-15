@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
-import MainMovieDetails from "../components/MainMovieDetails";
+import MainMovieDetails from "../components/MovieDetails/MainMovieDetails";
 import axios from "axios";
 
 const MovieDetails = () => {
@@ -40,7 +40,7 @@ const MovieDetails = () => {
   }, [id]);
 
 
-  
+
   return (
     <div>
       {errorStatus ? (

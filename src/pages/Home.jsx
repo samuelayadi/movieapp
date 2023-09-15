@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import MovieCard from "../components/MovieCard";
+import MovieCard from "../components/MovieCard/MovieCard";
 import Navbar from "../components/Navbar";
 import Header from "../components/Header";
-import MovieCardHeading from "../components/MovieCardHeading";
+import MovieCardHeading from "../components/MovieCard/MovieCardHeading";
 import axios from "axios";
 import Footer from "../components/Footer";
 

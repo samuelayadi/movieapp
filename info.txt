@@ -8,7 +8,7 @@ This is a movie discovery react app that was built by consuming tmdb api
 5.Open the project on your browser 
 
 
-****Folder Structure and Arrangement****
-App.jsx is the root folder and it contains Routers to Home and MovieDetails components
+****Component Structure and Arrangement****
+App.jsx is the root Component and it contains Routers to Home and MovieDetails components
 Home Component contains the Navbar, Header, MovieCardHeading, MovieCard and also Footer. 
 MovieDetails has 2 Components namely the Sidebar and the MainMovieDetails Component 
