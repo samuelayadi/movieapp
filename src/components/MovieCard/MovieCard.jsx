@@ -48,7 +48,7 @@ const MovieDetails = ({
   }, [id]);
 
   return (
-    <div data-testid:movie-card className="h-[500px] mx-auto">
+    <div data-testid="movie-card" className="h-[500px] mx-auto">
       <div className="flex justify-end">
         <button
           className={`text-2xl px-2 py-2 mr-2 mt-2 absolute rounded-full text-${color} z-40`}
@@ -63,7 +63,7 @@ const MovieDetails = ({
             src={`https://image.tmdb.org/t/p/w400${poster_path}`}
             alt=""
             className="object-cover h-[400px] mx-auto z-30"
-            data-testid:movie-poster
+            data-testid="movie-poster"
           />
         ) : (
           <img
@@ -73,14 +73,14 @@ const MovieDetails = ({
           />
         )}
         <p
-          data-testid:movie-release-date
+          data-testid="movie-release-date"
           className="text-sm xs:text-md mt-4 text-grey3"
         >
           {release_date}
         </p>
 
         <p
-          data-testid:movie-title
+          data-testid="movie-title"
           className="xs:text-lg font-semibold line-clamp-1 w-[250px]"
         >
           {title}

@@ -50,14 +50,14 @@ const MainMovieDetails = ({ movieDetails, trailer}) => {
             </Link>
           </div>
           <div className="flex mt-6 mx-auto text-lg space-x-2 lg:space-x-4 flex-wrap">
-            <p data-testid:movie-title className="font-semibold">
+            <p data-testid="movie-title" className="font-semibold">
               {movieDetails.title}
             </p>{" "}
             .
             {utcDate && (
-              <p data-testid:movie-release-date>{utcDate.toDateString()}</p>
+              <p data-testid="movie-release-date">{utcDate.toDateString()}</p>
             )}
-            <p data-testid:movie-runtime>{movieDetails.runtime} minutes</p>.
+            <p data-testid="movie-runtime">{movieDetails.runtime} minutes</p>.
           </div>
 
           <div className="flex text-sm mt-5">
@@ -70,7 +70,7 @@ const MainMovieDetails = ({ movieDetails, trailer}) => {
           </div>
 
           <div className="">
-            <p data-testid:overview className="mt-5">
+            <p data-testid="movie-overview" className="mt-5">
               {movieDetails.overview}
             </p>
           </div>
