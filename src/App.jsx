@@ -1,8 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
-import MovieDetails from "./pages/MovieDetails"; 
-
+import Home from "./pages/Home/Home";
+import MovieDetails from "./pages/MovieDetails/MovieDetails";
 
 function App() {
   return (

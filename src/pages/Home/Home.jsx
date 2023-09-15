@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import MovieCard from "../components/MovieCard/MovieCard";
-import Navbar from "../components/Navbar";
-import Header from "../components/Header";
-import MovieCardHeading from "../components/MovieCard/MovieCardHeading";
+import MovieCard from "../../components/MovieCard/MovieCard";
+import Navbar from "../../components/SharedLayout/Navbar";
+import Header from "../../components/SharedLayout/Header";
+import MovieCardHeading from "../../components/MovieCard/MovieCardHeading";
 import axios from "axios";
-import Footer from "../components/Footer";
+import Footer from "../../components/SharedLayout/Footer";
 
 const Home = () => {
   const [posterDetails, setPosterDetails] = useState([]);
@@ -74,10 +74,6 @@ const Home = () => {
         setIsLoading(false);
       });
   };
-
-
-
-
 
   return (
     <div>

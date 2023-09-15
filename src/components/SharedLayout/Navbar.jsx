@@ -1,5 +1,5 @@
 import React from "react";
-import Logo from "../assets/images/logo.jpg";
+import Logo from "../../assets/images/logo.jpg";
 import { NavLink } from "react-router-dom";
 import { BsSearch } from "react-icons/bs";
 import { HiMenuAlt4 } from "react-icons/hi";

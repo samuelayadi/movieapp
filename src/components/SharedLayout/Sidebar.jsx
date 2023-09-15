@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import Logo from "../assets/images/logo.jpg";
+import Logo from "../../assets/images/logo.jpg";
 import { NavLink } from "react-router-dom";
 import { GrHomeRounded } from "react-icons/gr";
 import { GoHome } from "react-icons/go";
