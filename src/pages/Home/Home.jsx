@@ -5,6 +5,7 @@ import Header from "../../components/SharedLayout/Header";
 import MovieCardHeading from "../../components/MovieCard/MovieCardHeading";
 import axios from "axios";
 import Footer from "../../components/SharedLayout/Footer";
+import {HashLink as Link} from 'react-router-hash-link'
 
 const Home = () => {
   const [posterDetails, setPosterDetails] = useState([]);

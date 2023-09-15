@@ -9,6 +9,7 @@ const MovieDetails = () => {
   const [movieDetails, setMovieDetails] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState("");
+  const [trailer, setTrailer] = useState([])
   const [errorStatus, setErrorStatus] = useState(false);
 
   useEffect(() => {
@@ -36,7 +37,28 @@ const MovieDetails = () => {
         setErrorMessage(err.message);
         setIsLoading(false);
       });
+
+      // Request for Trailer Link
+      axios
+        .get(`https://api.themoviedb.org/3/movie/${id}?append_to_response=videos,images,credit`, options)
+        .then((response) => {
+          const movieTrailer = response.data.videos.results[0];
+          if (movieTrailer.type !== "Trailer"){
+            console.log(movieTrailer)
+          }
+          setTrailer(movieTrailer);
+          setIsLoading(false);
+        })
+        .catch((err) => {
+          setErrorStatus(true);
+          setErrorMessage(err.message);
+          setIsLoading(false);
+        });
+
+      
   }, [id]);
+
+  console.log(trailer)
 
   return (
     <div>
@@ -52,7 +74,7 @@ const MovieDetails = () => {
       ) : (
         <>
           <Sidebar />
-          <MainMovieDetails movieDetails={movieDetails} />
+          <MainMovieDetails movieDetails={movieDetails} trailer={trailer}/>
         </>
       )}
     </div>

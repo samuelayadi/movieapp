@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import React from "react";
 import { BsFillHeartFill, BsLink45Deg } from "react-icons/bs";
-import { FaPlay } from "react-icons/fa";
+import { PiTelevisionSimpleBold } from "react-icons/pi";
 import { Link } from "react-router-dom";
 
-const MainMovieDetails = ({ movieDetails}) => {
+const MainMovieDetails = ({ movieDetails, trailer}) => {
  
 
   // Function to Convert to UTC Date Format
@@ -39,12 +39,15 @@ const MainMovieDetails = ({ movieDetails}) => {
         </div>
         <div className="w-11/12 mx-auto">
           <div className="mt-8 mb-4">
-            <button className="px-10 py-2 rounded-lg bg-secondary flex items-center border border-primary space-x-3">
+            <Link
+              to={`https://www.youtube.com/watch?v=${trailer.key}`}
+              className="px-10 py-2 w-full rounded-lg bg-secondary justify-center flex items-center border border-primary space-x-3 md:w-8/12 lg:w-5/12"
+            >
               <span className="text-xl text-primary pr-4">
-                <BsFillHeartFill />
+                <PiTelevisionSimpleBold />
               </span>
-              Add to Favorites
-            </button>
+              Watch Snippet
+            </Link>
           </div>
           <div className="flex mt-6 mx-auto text-lg space-x-2 lg:space-x-4 flex-wrap">
             <p data-testid:movie-title className="font-semibold">
